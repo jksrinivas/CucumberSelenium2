@@ -28,7 +28,9 @@ public class AwrsRegisterSteps {
     }
     @When("Not found page is returned")
     public void notFoundText(){
-        taxPage.getNotFoundText();
+        String actual = taxPage.getNotFoundText();
+        System.out.println(actual);
+        Assert.assertEquals("Not found", actual);
     }
     @Then("search for XXAA 000 0044 5444")
     public void searchForUrn() throws InterruptedException {
@@ -37,8 +39,8 @@ public class AwrsRegisterSteps {
     }
     @And("Invalid page is returned")
     public void invalidText(){
-        System.out.println(taxPage.getNoResultText());
-        Assert.assertEquals("You must enter a valid Unique Reference Number", taxPage.getNoResultText());
+        String actualText = taxPage.getNoResultText();
+        Assert.assertEquals("You must enter a valid Unique Reference Number", actualText);
 
     }
 }
